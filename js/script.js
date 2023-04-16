@@ -31,3 +31,30 @@ async function popular(){
 
 }
 popular()
+
+
+async function searchMenu(){
+    const searchIcon = document.querySelector('.search-icon');
+    const searchBox = document.querySelector('.search-box');
+    
+    searchIcon.addEventListener('mouseover', event => {
+        searchBox.style.display = "block"
+    })
+
+    searchIcon.addEventListener('click', event => {
+        console.log("Buscando");
+        const nameSearch = searchBox.value
+    })
+
+    searchBox.addEventListener('keydown', function(event){
+        if(event.key == "Enter"){
+            const nameSearch = searchBox.value
+            console.log("Buscando");
+        }
+    })
+
+}
+
+searchMenu()
+
+

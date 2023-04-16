@@ -30,10 +30,34 @@
     padding-right: 1rem;
 }
 
+.menu-right button{
+    background-color: #0077b6;
+    border: none;
+}
+
+
 .menu-right img{
     width: 2rem;
-    
 }
+
 .logo{
     width: 100px;
 }
+
+.search-box{
+    width: 200px;
+    height: 25px;
+    background-color: #fff	;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: start;
+    padding: 5px;
+    align-items: center;
+    border: #0077b6;
+    display: none;
+}
+
+.search-box:focus{
+    outline: none;
+}
+
