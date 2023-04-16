@@ -6,13 +6,18 @@ async function popular(){
     const movies = await data.json()
     console.log(movies);
 
-    const container = document.getElementById('container')
+    const listMovie = document.getElementById('listMovie')
     movies.results.forEach(element => {
-        const containerMovie = document.createElement('div')
+        const containerMovie = document.createElement('li')
         containerMovie.className = 'containerMovie'
 
         const link = document.createElement('a')
         link.href = 'google.com'
+        link.className = 'link-poster'
+
+        const linkTitle = document.createElement('a')
+        linkTitle.href = '#'
+        linkTitle.className = 'link-title'
 
         const title = document.createElement('span')
         title.className = 'titleMovie'
@@ -23,11 +28,17 @@ async function popular(){
         poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`
 
         link.append(poster)
+        linkTitle.append(title)
 
         containerMovie.append(link)
-        containerMovie.append(title)
-        container.append(containerMovie)
+        containerMovie.append(linkTitle)
+        listMovie.append(containerMovie)
     });
+
+    const buttonRight = document.createElement('button')
+    buttonRight.value= ">"
+    buttonRight.className = "buttonRight"
+    listMovie.append(buttonRight)
 
 }
 popular()
@@ -54,6 +65,25 @@ async function searchMenu(){
     })
 
 }
+
+
+async function carousel(){
+    const buttonRight = document.querySelector('.buttonRight');
+    const buttonLeft = document.querySelector('.buttonLeft');
+
+    const carousel = document.querySelector('.carousel');
+
+    console.log(carousel.scrollleft);
+
+    buttonRight.addEventListener('click', event =>{
+        carousel.scrollLeft += 1137;
+    })
+
+    buttonLeft.addEventListener('click', event =>{
+        carousel.scrollLeft -=1137;
+    })
+}
+carousel()
 
 searchMenu()
 
