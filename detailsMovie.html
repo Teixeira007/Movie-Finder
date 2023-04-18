@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleDetails.css">
+    <title>MovieDetails</title>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <ul class="menu-left">
+                <img src="img/logo7-.png" alt="" class="logo">
+                <li class="menu-itens">Populares</li>
+                <li class="menu-itens">Em Cartaz</li>
+                <li class="menu-itens">Próximas Estreias</li>
+                <li class="menu-itens">Mais bem Avaliados</li>
+            </ul>
+            <ul class="menu-right">
+                <input type="text" placeholder="Buscar..." class="search-box"></input>
+                <div class="icons-menu-right">
+                    <button class="search-icon" ><img class="img-icon-search" src="icon/search.png" alt=""></button>
+                    <img class="profile" src="icon/profile.png" alt="">
+                </div>
+                
+            </ul>
+        </div>
+        <div class="containerDetails">
+            <div class="info-primary">
+                <img  class="imgMovie" src="" alt="">
+                <div class="infoMovies">
+                    <div class="info">
+                        <h1 class="titleDetails"></h1>
+                        <p class="titleOrigi"></p>
+                        <div class="date-time-gender">
+                            <span class="data"></span>
+                            <span class="gender"></span>
+                            <span class="time"></span>
+                        </div>
+                        <div class="listMovies">
+                            <button class="likedList"><img src="./icon/listMaisTarde.png" alt=""></button>
+                            <button class="interestList"><img src="./icon/LikedList.png" alt=""></button>
+                            <button class="toAssess"><img src="./icon/avaliar.png" alt=""></button>
+                        </div>
+                        <div class="sinopse">
+                            <span class="tagline"></span>
+                            <p class="titleSinopse">Sinopse</p>
+                            <p class="sinopseValue"></p>
+                        </div>
+                    </div>
+                    <div class="info-creditos"></div>
+                </div>
+            </div>
+        </div>
+        <div class="info-secundary"></div>
+    </div>
+    <!-- <script src="./js/script.js"></script>
+     -->
+     <script src="./js/scriptDetails.js"></script>
+</body>
+</html>

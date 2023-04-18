@@ -1,0 +1,59 @@
+.imgMovie{
+    width: 300px;
+}
+
+.info-primary{
+    padding: 3rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+}
+
+.titleDetails{
+    color: #fff;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+.containerDetails{
+    width: 100wh;
+    background-color: black;
+}
+.listMovies{
+    padding: 1rem 0 1rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.listMovies button img{
+    width: 20px;
+    padding: 8px;
+}
+
+.listMovies button{
+    background-color: #0077b6;
+    border-radius: 50%;
+}
+
+.sinopse{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.titleSinopse{
+    font-size: 1.4rem;
+}
+
+.tagline{
+    color: #ccc;
+}
+
+/* .containerDetails{
+    background-image: url('./img/teste.jpg') no-repeat;
+} */
