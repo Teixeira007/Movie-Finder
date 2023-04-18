@@ -12,6 +12,7 @@ async function buildDetailsMovies(){
     const moviesDetails = await data.json()
     console.log(moviesDetails);
 
+    
     const titleMovie = document.querySelector('.titleDetails')
     titleMovie.textContent = moviesDetails.title
 
@@ -27,22 +28,50 @@ async function buildDetailsMovies(){
 
     date.textContent = moviesDetails.release_date
     time.textContent = `${moviesDetails.runtime} min`
-    gender.textContent = ` - ${moviesDetails.genres[0].name}, ${moviesDetails.genres[1].name}, ${moviesDetails.genres[2].name} - `
 
-    const sinopse = document.querySelector('.sinopseValue')
-    sinopse.textContent = moviesDetails.overview
+    const contGenres = moviesDetails.genres.length;
+    for(let i=0; i<contGenres;i++){
+        gender.textContent += ` - ${moviesDetails.genres[i].name} `
+    }
 
-    const tagline = document.querySelector('.tagline')
-    tagline.textContent = moviesDetails.tagline
+    if(moviesDetails.overview == ""){
+        const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}?api_key=${api_key}`)
+        const moviesDetailsNoBr = await data.json()
+        const sinopse = document.querySelector('.sinopseValue')
+        sinopse.textContent = moviesDetailsNoBr.overview
 
-    // const img2 = document.createElement('img')
-    // img2.src = `https://image.tmdb.org/t/p/w500${moviesDetails.backdrop_path}`
+        const tagline = document.querySelector('.tagline')
+        tagline.textContent = moviesDetailsNoBr.tagline
+    }else{
+        const sinopse = document.querySelector('.sinopseValue')
+        sinopse.textContent = moviesDetails.overview
 
-    // containerDetails.append(img2)
-    containerDetails.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${moviesDetails.backdrop_path})`
+        const tagline = document.querySelector('.tagline')
+        tagline.textContent = moviesDetails.tagline
+    }
+
+ 
+    containerDetails.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${moviesDetails.backdrop_path})`
+    // containerDetails.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${moviesDetails.poster_path})`
+
     containerDetails.style.backgroundRepeat = "no-repeat";
+    containerDetails.style.backgroundSize = "cover";
     // containerDetails.style.backgroundSize = "cover";
-    containerDetails.style.backgroundSize = "100% 100%";
+
+    const divBackgroundShadow = document.createElement('div')
+    divBackgroundShadow.className = 'divShadow'
+
+    containerDetails.append(divBackgroundShadow)
+}
+
+
+async function mouseOverList(){
+
+    const buttonLikedList = document.querySelector('.likedList')
+    
+    buttonLikedList.addEventListener('mouseover', event =>{
+
+    })
 }
 
 buildDetailsMovies()

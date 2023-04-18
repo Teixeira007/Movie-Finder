@@ -31,13 +31,26 @@
 }
 
 .listMovies button img{
-    width: 20px;
-    padding: 8px;
+    width: 50%;
+    height: auto;
+    /* padding: 8px; */
 }
 
 .listMovies button{
     background-color: #0077b6;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.listMovies button:hover{
+    opacity: 0.5;
 }
 
 .sinopse{
@@ -54,6 +67,7 @@
     color: #ccc;
 }
 
-/* .containerDetails{
-    background-image: url('./img/teste.jpg') no-repeat;
-} */
+.shadow{
+    width: 100wh;
+    background-image: linear-gradient(to right, rgba(31.5, 31.5, 52.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 52.5, 0.84) 50%, rgba(31.5, 31.5, 52.5, 0.84) 100%);
+}

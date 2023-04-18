@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'google.com'
+            link.href = 'detailsMovie.html'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             const poster = document.createElement('img')
             poster.className = 'posterMovie'
             poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`
+            poster.id = element.id
+
     
             link.append(poster)
             linkTitle.append(title)
@@ -81,6 +83,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.append(link)
             containerMovie.append(linkTitle)
             listMovie.append(containerMovie)
+
+            link.addEventListener('click', detailsMovie)
         });
     
     }
@@ -96,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'google.com'
+            link.href = 'detailsMovie.html'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -111,6 +115,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             const poster = document.createElement('img')
             poster.className = 'posterMovie'
             poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`
+            poster.id = element.id
     
             link.append(poster)
             linkTitle.append(title)
@@ -118,6 +123,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.append(link)
             containerMovie.append(linkTitle)
             listMovie.append(containerMovie)
+
+            link.addEventListener('click', detailsMovie)
         });
     }
     
@@ -133,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'google.com'
+            link.href = 'detailsMovie.html'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -148,6 +155,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             const poster = document.createElement('img')
             poster.className = 'posterMovie'
             poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`
+            poster.id = element.id
     
             link.append(poster)
             linkTitle.append(title)
@@ -155,6 +163,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.append(link)
             containerMovie.append(linkTitle)
             listMovie.append(containerMovie)
+
+            link.addEventListener('click', detailsMovie)
         });
     }
     
@@ -169,7 +179,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'google.com'
+            link.href = 'detailsMovie.html'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -184,6 +194,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             const poster = document.createElement('img')
             poster.className = 'posterMovie'
             poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`
+            poster.id = element.id
+
     
             link.append(poster)
             linkTitle.append(title)
@@ -191,6 +203,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.append(link)
             containerMovie.append(linkTitle)
             listMovie.append(containerMovie)
+
+            link.addEventListener('click', detailsMovie)
         });
     }
     
@@ -204,6 +218,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     async function detailsMovie(event){
         event.preventDefault();
         const idMovie = event.target.id
+        console.log('ate aqui');
 
         window.location.href =  `${event.target.parentNode.href}?id=${idMovie}` ;
     }
