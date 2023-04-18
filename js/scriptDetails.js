@@ -67,11 +67,44 @@ async function buildDetailsMovies(){
 
 async function mouseOverList(){
 
-    const buttonLikedList = document.querySelector('.likedList')
-    
-    buttonLikedList.addEventListener('mouseover', event =>{
+    const buttonLikedList = document.querySelector('.buttonLikedList')
+    const spanLikedList = document.querySelector('.likedList')
 
+    const buttonInterestList = document.querySelector('.buttonInterestList')
+    const spanInterestList = document.querySelector('.interestList')
+
+    const buttonToAssess = document.querySelector('.buttonToAssess')
+    const spanToAssess = document.querySelector('.toAssess')
+
+
+
+    buttonLikedList.addEventListener('mouseover', event =>{
+        spanLikedList.style.display = 'block';
     })
+
+    buttonLikedList.addEventListener('mouseout', event =>{
+        spanLikedList.style.display = 'none'
+    })
+
+
+    buttonInterestList.addEventListener('mouseover', event =>{
+        spanInterestList.style.display = 'block';
+    })
+
+    buttonInterestList.addEventListener('mouseout', event =>{
+        spanInterestList.style.display = 'none'
+    })
+
+    buttonToAssess.addEventListener('mouseover', event =>{
+        spanToAssess.style.display = 'block';
+    })
+
+    buttonToAssess.addEventListener('mouseout', event =>{
+        spanToAssess.style.display = 'none'
+    })
+
+
 }
 
+mouseOverList()
 buildDetailsMovies()

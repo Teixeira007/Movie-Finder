@@ -71,3 +71,47 @@
     width: 100wh;
     background-image: linear-gradient(to right, rgba(31.5, 31.5, 52.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 52.5, 0.84) 50%, rgba(31.5, 31.5, 52.5, 0.84) 100%);
 }
+
+.listMovies{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonsList{
+    display: flex;
+    gap: 1rem;
+}
+
+.spansList{
+    display: flex;
+    width: 100px;
+}
+
+.likedList{
+    display: none;
+    white-space: nowrap;
+    background-color: #0077b6;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    margin-left: -2.5rem;
+    transition: all 0.3s;
+}
+
+.interestList{
+    display: none;
+    white-space: nowrap;
+    background-color: #0077b6;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    margin-left: -2.5rem;
+    transition: all 0.3s;
+}
+
+.toAssess{
+    margin-left: 5rem;
+    background-color: #0077b6;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    display: none;
+    transition: all 0.3s;
+}
