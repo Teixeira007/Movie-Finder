@@ -142,4 +142,40 @@
     font-size: 12px;
 }
 
+.info-secundary {
+    padding: 2rem 3rem 3rem 3rem;
+}
+
+.info-secundary h1{
+    font-size: 1.3rem;
+    padding-bottom: 1.3rem;
+}
+
+.cast{
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.imgCast{
+    width: 150px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.imgCast:hover{
+    transform: scale(1.1);
+}
+
+.person{
+    width: 150px;
+    margin-bottom: 2rem;
+}
+
+.characterCast{
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+
 

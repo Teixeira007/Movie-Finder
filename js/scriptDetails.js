@@ -66,6 +66,7 @@ async function buildDetailsMovies(){
     containerDetails.append(divBackgroundShadow)
 
     credits(idMovie)
+    cast(idMovie)
 }
 
 
@@ -118,7 +119,6 @@ async function credits(idMovie){
     const credits = moviesCredits.crew.filter(a => a.job == "Characters" || a.job == "Writer" || a.job == "Director");
 
     const infoCredits = document.querySelector('.info-creditos');
-    console.log(credits);
     credits.forEach(element => {
         const divCredits = document.createElement('div')
 
@@ -140,6 +140,44 @@ async function credits(idMovie){
         divCredits.append(jobCredits)
         infoCredits.append(divCredits)
     })
+}
+
+async function cast(idMovie){
+    const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${api_key}&language=en-US`)
+    const moviesCredits = await data.json()
+
+    console.log(moviesCredits);
+    const cast = moviesCredits.cast.filter(a => a.known_for_department == "Acting");
+    console.log(cast);
+
+    const divCast = document.querySelector('.cast')
+    cast.forEach(element => {
+        const nameCast = document.createElement('p')
+        nameCast.className = "nameCast"
+        nameCast.textContent = element.name
+
+        const characterCast = document.createElement('p')
+        characterCast.className = "characterCast"
+        characterCast.textContent = element.character
+
+        const imgCast = document.createElement('img')
+        imgCast.src = `https://image.tmdb.org/t/p/w500${element.profile_path}`
+        imgCast.className = "imgCast"
+
+        const linkCast = document.createElement('a')
+        linkCast.href = "#"
+        linkCast.id = element.id
+
+        const divPerson = document.createElement('div')
+        divPerson.className = "person"
+
+        linkCast.append(imgCast)
+        divPerson.append(linkCast)
+        divPerson.append(nameCast)
+        divPerson.append(characterCast)
+        divCast.append(divPerson)
+    })
+
 }
 mouseOverList()
 buildDetailsMovies()
