@@ -42,6 +42,7 @@ async function buildDetailsMovies(){
 
         const tagline = document.querySelector('.tagline')
         tagline.textContent = moviesDetailsNoBr.tagline
+        console.log(moviesDetailsNoBr);
     }else{
         const sinopse = document.querySelector('.sinopseValue')
         sinopse.textContent = moviesDetails.overview
@@ -50,7 +51,8 @@ async function buildDetailsMovies(){
         tagline.textContent = moviesDetails.tagline
     }
 
- 
+    
+
     containerDetails.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${moviesDetails.backdrop_path})`
     // containerDetails.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${moviesDetails.poster_path})`
 
@@ -62,6 +64,8 @@ async function buildDetailsMovies(){
     divBackgroundShadow.className = 'divShadow'
 
     containerDetails.append(divBackgroundShadow)
+
+    credits(idMovie)
 }
 
 
@@ -106,5 +110,13 @@ async function mouseOverList(){
 
 }
 
+
+async function credits(idMovie){
+    const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${api_key}&language=en-US`)
+    const moviesCredits = await data.json()
+
+    console.log(moviesCredits.crew);
+    console.log(moviesCredits.cast.filter(a => a.known_for_department!="Acting"));
+}
 mouseOverList()
 buildDetailsMovies()

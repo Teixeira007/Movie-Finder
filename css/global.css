@@ -6,6 +6,7 @@
 }
 
 /* Menu */
+
 .menu{
     display: flex;
     justify-content: space-between;
@@ -70,104 +71,8 @@
     outline: none;
 }
 
-/* Carrossel com os filmes populares */
-.wrapper{
-    display: flex;
-    align-items:  center;
-    margin: 0rem 2rem 0 1rem;
-}
 
-.title-carousel{
-    margin-bottom: 0.6rem;
-    font-size: 1.5rem;
-    margin-left: 1rem;
-    margin: 2rem 0 0.6rem 1.2rem;
-    border-bottom: 4px solid #0077b6;
-}
-
-.buttonLeft, .buttonRight{
-    position: absolute;
-    height: 74px;
-    /* top: calc(50% - 20%); */
-    line-height: 40px;
-    width: 40px;
-    transition:  .2s ease all;
-    border: none;
-    border-radius: 5px;
-    opacity: 0.4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.buttonLeft img, .buttonRight img{
-    width: 35px;
-    
-}
-
-.buttonLeft{
-    left: 1.2%;
-}
-
-.buttonRight{
-    right: 1.2%;
-}
-
-.buttonLeft:hover, .buttonRight:hover{
-    opacity: 0.9;
-    transform: scale(1.2);
-}
-
-.carousel{
-    width: 100%;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    transition: all 0.5s ease-in-out
-}
-.listMovie{
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.9rem;
-}
-
-.containerMovie{
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-    align-items: space-between;
-    gap: 0.4rem;
-
-}
-
-
-.posterMovie{
-    width: 150px;
-    border-radius: 1rem;
-    margin-bottom: 0.3rem;
-}
-
-.link-poster:hover{
-    transform: scale(1.1);
-}
-
-.link-poster{
-    transition: all 0.3s;
-}
-
-.link-title{
-    color: #000;
-    text-decoration: none;
-    text-align: center;
-    width: 150px;
-    transition: all 0.3s;
-}
-
-.link-title:hover{
-    color: #0077b6;
-}
-
+/* Footer */
 .footer{
     height: 170px;
     background-color: #0077b6;
@@ -242,4 +147,3 @@
 .footer-end ul li a:hover{
     text-decoration: underline;
 }
-
