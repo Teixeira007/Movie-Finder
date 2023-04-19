@@ -115,8 +115,31 @@ async function credits(idMovie){
     const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${api_key}&language=en-US`)
     const moviesCredits = await data.json()
 
-    console.log(moviesCredits.crew);
-    console.log(moviesCredits.cast.filter(a => a.known_for_department!="Acting"));
+    const credits = moviesCredits.crew.filter(a => a.job == "Characters" || a.job == "Writer" || a.job == "Director");
+
+    const infoCredits = document.querySelector('.info-creditos');
+    console.log(credits);
+    credits.forEach(element => {
+        const divCredits = document.createElement('div')
+
+        const nameCredtits = document.createElement('p')
+        nameCredtits.className = "nameCredits"
+        nameCredtits.textContent = element.name;
+
+        const jobCredits = document.createElement('p')
+        jobCredits.className = "jobCredits"
+        jobCredits.textContent = element.job
+
+        const linkPerson = document.createElement('a')
+        linkPerson.id = element.id
+        linkPerson.className = "linkPerson";
+        linkPerson.href = "#"
+
+        linkPerson.append(nameCredtits)
+        divCredits.append(linkPerson)
+        divCredits.append(jobCredits)
+        infoCredits.append(divCredits)
+    })
 }
 mouseOverList()
 buildDetailsMovies()

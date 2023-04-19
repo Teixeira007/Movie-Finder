@@ -57,10 +57,12 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    color: #ccc;
 }
 
 .titleSinopse{
     font-size: 1.4rem;
+    color: #fff;
 }
 
 .tagline{
@@ -118,3 +120,26 @@
     display: none;
     transition: all 0.3s;
 }
+
+.info-creditos{
+    display: grid;
+    margin-top: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 1rem;
+    color: #ccc;
+}
+
+.nameCredits{
+    color: #fff;
+    text-decoration: none;
+}
+
+.nameCredits:hover{
+    opacity: 0.5;
+}
+
+.jobCredits{
+    font-size: 12px;
+}
+
+
