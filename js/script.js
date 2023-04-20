@@ -324,7 +324,25 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     
     searchMenu()
     
+    async function signupSignin(){
+        const login = document.querySelector('.login')
+        const signup = document.querySelector('.signup') 
+        
+        console.log(signup);
+        
+        login.addEventListener('click', event =>{
+            event.preventDefault()
+            window.location.href =  `TelaLoginCadastro.html?id=login`
+        })
+        
+        signup.addEventListener('click', event =>{
+            event.preventDefault()
+            window.location.href =  `TelaLoginCadastro.html?id=registrar`
+        })
+    } 
     
+    signupSignin()
+
     
 })
 

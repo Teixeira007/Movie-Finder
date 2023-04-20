@@ -53,6 +53,20 @@
     gap: 0.6rem;
 }
 
+.profile{
+    display: none;
+}
+
+.icons-menu-right a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.icons-menu-right a:hover{
+    opacity: 0.5;
+}
+
+
 /* Campo de Busca */
 .search-box{
     width: 200px;

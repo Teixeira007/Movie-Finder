@@ -144,6 +144,10 @@ body {
     border: none;
     background-color: #ecf0f1;
 }
+
+.form input:focus{
+    outline: none;
+}
 input:-webkit-autofill 
 {    
     -webkit-box-shadow: 0 0 0px 1000px #ecf0f1 inset !important;
@@ -241,6 +245,32 @@ input:-webkit-autofill
     z-index: -1;
     animation: deslocamentoDir 0.3s; 
 }
+
+/* Validações */
+.input-container--invalido {
+    margin-bottom: 0.5rem;
+}
+
+.input-container--invalido .input {
+    border: 1px solid var(--cor-aviso);
+    border-radius: 7px;
+}
+
+.input-container--invalido .input-label {
+    color: var(--cor-aviso);
+}
+
+.input-mensagem-erro {
+    display: none;
+}
+
+.input-container--invalido .input-mensagem-erro {
+    color: var(--cor-aviso);
+    display: block;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+
 
 @keyframes deslocamentoEsq {
 

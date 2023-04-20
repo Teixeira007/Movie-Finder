@@ -3,14 +3,14 @@ const api_key = 'df11c6ebfaff4552cd4ceb4187f105fb';
 async function buildDetailsMovies(){
     const urlParams = new URLSearchParams(window.location.search)
     const idMovie = urlParams.get('id')
-    console.log(idMovie);
+    // console.log(idMovie);
 
     const containerDetails = document.querySelector('.containerDetails')
     
 
     const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}?api_key=${api_key}&language=pt-BR`)
     const moviesDetails = await data.json()
-    console.log(moviesDetails);
+    // console.log(moviesDetails);
 
     
     const titleMovie = document.querySelector('.titleDetails')
@@ -68,6 +68,7 @@ async function buildDetailsMovies(){
     credits(idMovie)
     cast(idMovie)
     resenha(idMovie)
+    ratingMovie(idMovie)
 }
 
 
@@ -147,9 +148,9 @@ async function cast(idMovie){
     const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${api_key}&language=en-US`)
     const moviesCredits = await data.json()
 
-    console.log(moviesCredits);
+    // console.log(moviesCredits);
     const cast = moviesCredits.cast.filter(a => a.known_for_department == "Acting");
-    console.log(cast);
+    // console.log(cast);
 
     const divCast = document.querySelector('.cast')
     cast.forEach(element => {
@@ -188,12 +189,11 @@ async function cast(idMovie){
 async function resenha(idMovie){
     const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/reviews?api_key=${api_key}&language=pt-BR&page=1`)
     const moviesResenha = await data.json()
-    console.log(moviesResenha);
+    // console.log(moviesResenha);
 
     const containerResenha = document.querySelector('.container-resenha')
 
     if(moviesResenha.results.length == 0){
-        console.log('Ta vazia');
         const listEmpty = document.createElement('p')
         listEmpty.textContent = "Não tem nenhuma resenha sobre esse filme, porque você não deixa a primeira"
         
@@ -213,7 +213,7 @@ async function resenha(idMovie){
         infoResenha.className = 'info-resenha'
 
         const info = document.createElement('div')
-        info.className = 'info'
+        info.className = 'infos'
 
         const titleResenha = document.createElement('p')
         titleResenha.className = 'title-resenha'
@@ -256,6 +256,14 @@ async function resenha(idMovie){
         containerResenha.append(divResenha)
         containerResenha.append(contentResenha)
     })
+
+}
+
+async function ratingMovie(idMovie){
+    
+    // const moviesRating = await data.json()
+
+    // console.log(moviesRating);
 
 }
 mouseOverList()

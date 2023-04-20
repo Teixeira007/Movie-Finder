@@ -1,5 +1,6 @@
 .imgMovie{
     width: 300px;
+    border-radius: 15px;
 }
 
 .info-primary{
@@ -205,7 +206,7 @@
     border-radius: 50%;
 }
 
-.info{
+.infos{
     color: #000;
 }
 
@@ -221,9 +222,6 @@
 }
 
 .info-resenha{
-    /* display: grid;
-    grid-template-columns: 7fr 1fr;
-    column-gap: 1rem; */
     display: flex;
     gap: 2rem;
 }
@@ -247,6 +245,10 @@
     height: 30px;
     width: 40px;
     gap: 0.5rem;
+}
+
+.divAssess p{
+    color: #fff;
 }
 .iconAssess{
     width: 12px;

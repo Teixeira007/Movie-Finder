@@ -43,17 +43,22 @@
                 <form class="form">
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Nome">
+                        <input class="form-signup" type="text" placeholder="Nome" data-tipo="nome" required>
+                        <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
+
                     
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
+                        <input class="form-signup" type="email" data-tipo="email" placeholder="Email" required>
+                        <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
+
                     
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Senha">
+                        <input class="form-signup" type="password" data-tipo="password" placeholder="Senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" required>
+                        <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
                     
                     
@@ -90,16 +95,18 @@
                     </ul>
                 </div>
                 <p class="description description-second">ou use sua conta do e-mail:</p>
-                <form class="form">
+                <form class="form ">
                 
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
+                        <input class="form-login" type="email" data-tipo="email" placeholder="Email" required>
+                        <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
                 
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Password">
+                        <input class="form-login" data-tipo="password" type="password" placeholder="Password"  required>
+                        <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
                 
                     <a class="password" href="#">Esqueceu sua senha?</a>
@@ -109,5 +116,6 @@
         </div>
     </div>
     <script src="js/TelaLoginCadastro.js"></script>
+    <script src="./js/validacao.js"></script>
 </body>
 </html>
