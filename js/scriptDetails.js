@@ -67,6 +67,7 @@ async function buildDetailsMovies(){
 
     credits(idMovie)
     cast(idMovie)
+    resenha(idMovie)
 }
 
 
@@ -116,7 +117,7 @@ async function credits(idMovie){
     const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${api_key}&language=en-US`)
     const moviesCredits = await data.json()
 
-    const credits = moviesCredits.crew.filter(a => a.job == "Characters" || a.job == "Writer" || a.job == "Director");
+    const credits = moviesCredits.crew.filter(a => a.job == "Characters" || a.job == "Writer" || a.job == "Director" || a.job == "Story");
 
     const infoCredits = document.querySelector('.info-creditos');
     credits.forEach(element => {
@@ -164,6 +165,10 @@ async function cast(idMovie){
         imgCast.src = `https://image.tmdb.org/t/p/w500${element.profile_path}`
         imgCast.className = "imgCast"
 
+        if(element.profile_path == null){
+            imgCast.src = `./icon/user-100.svg`
+        }
+
         const linkCast = document.createElement('a')
         linkCast.href = "#"
         linkCast.id = element.id
@@ -176,6 +181,80 @@ async function cast(idMovie){
         divPerson.append(nameCast)
         divPerson.append(characterCast)
         divCast.append(divPerson)
+    })
+
+}
+
+async function resenha(idMovie){
+    const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/reviews?api_key=${api_key}&language=pt-BR&page=1`)
+    const moviesResenha = await data.json()
+    console.log(moviesResenha);
+
+    const containerResenha = document.querySelector('.container-resenha')
+
+    if(moviesResenha.results.length == 0){
+        console.log('Ta vazia');
+        const listEmpty = document.createElement('p')
+        listEmpty.textContent = "Não tem nenhuma resenha sobre esse filme, porque você não deixa a primeira"
+        
+        containerResenha.append(listEmpty)
+    }
+    moviesResenha.results.forEach(element => {
+        
+
+        const divResenha = document.createElement('div')
+        divResenha.className = 'resenha'
+        
+        const imgAvatar = document.createElement('img')
+        imgAvatar.src = `https://image.tmdb.org/t/p/w500${element.author_details.avatar_path}`
+        imgAvatar.className = 'avatar'
+
+        const infoResenha = document.createElement('div')
+        infoResenha.className = 'info-resenha'
+
+        const info = document.createElement('div')
+        info.className = 'info'
+
+        const titleResenha = document.createElement('p')
+        titleResenha.className = 'title-resenha'
+        titleResenha.textContent = `Uma resenha escrita por ${element.author}`
+
+        const dateResenha = document.createElement('p')
+        dateResenha.className = 'date-resenha'
+        const date = element.created_at
+        const dateFormat = date.split('T')
+        dateResenha.textContent = `Escrita em ${dateFormat[0]}`
+
+        const assessResenha = document.createElement('p')
+        assessResenha.className = 'assess-resenha'
+        assessResenha.textContent = element.author_details.rating
+
+        const contentResenha = document.createElement('p')
+        contentResenha.className = 'content-resenha'
+        contentResenha.textContent = element.content
+
+        const divAssess = document.createElement('div')
+        divAssess.className = 'divAssess'
+
+        const imgIcon = document.createElement('img')
+        imgIcon.src = './icon/avaliar.png'
+        imgIcon.className = 'iconAssess'
+
+        info.append(titleResenha)
+        info.append(dateResenha)
+
+        divAssess.append(imgIcon)
+        divAssess.append(assessResenha)
+
+        infoResenha.append(info)
+        infoResenha.append(divAssess)
+
+        divResenha.append(imgAvatar)
+        divResenha.append(infoResenha)
+        // divResenha.append(contentResenha)
+
+        containerResenha.append(divResenha)
+        containerResenha.append(contentResenha)
     })
 
 }

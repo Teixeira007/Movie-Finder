@@ -153,14 +153,15 @@
 
 .cast{
     display: flex;
-    gap: 1.5rem;
+    gap: 1.7rem;
     flex-wrap: wrap;
 }
 
 .imgCast{
-    width: 150px;
+    width: 120px;
     border-radius: 10px;
     transition: all 0.3s;
+    height: 180px;
 }
 
 .imgCast:hover{
@@ -168,14 +169,90 @@
 }
 
 .person{
-    width: 150px;
+    width: 120px;
     margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.linkPerson{
+    text-decoration: none;
 }
 
 .characterCast{
     font-size: 0.8rem;
     opacity: 0.9;
 }
+
+.nameCast{
+    font-weight: 600;
+}
+
+
+.container-resenha{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);;
+}
+
+.avatar{
+    width: 50px;
+    border-radius: 50%;
+}
+
+.info{
+    color: #000;
+}
+
+.title-resenha{
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.resenha{
+    display: grid;
+    grid-template-columns: 0.5fr 7fr;
+    column-gap: 1rem;
+}
+
+.info-resenha{
+    /* display: grid;
+    grid-template-columns: 7fr 1fr;
+    column-gap: 1rem; */
+    display: flex;
+    gap: 2rem;
+}
+
+.container-resenha h1{
+    padding-bottom: 0;
+}
+
+.title-resenha-h1{
+    margin-top: 4rem;
+}
+
+.divAssess{
+    background-color: #0077b6;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+    color: #fff;
+    height: 30px;
+    width: 40px;
+    gap: 0.5rem;
+}
+.iconAssess{
+    width: 12px;
+}
+
+
 
 
 

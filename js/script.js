@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 
 
     async function popular(){
-        const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=1`)
+        const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=1&language=pt-BR&region=BR`)
         const movies = await data.json()
         console.log(movies);
     
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     
     
     async function cartaz(){
-        const data = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&page=1`)
+        const data = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&page=1&region=BR&language=pt-BR`)
         const movies = await data.json()
         console.log(movies);
     
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     }
     
     async function trending(){
-        const data = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}`)
+        const data = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&language=pt-BR&region=BR`)
         const movies = await data.json()
         console.log(movies);
     
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     
     
     async function topRanqued(){
-        const data = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}&page=1`)
+        const data = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}&page=1&language=pt-BR&region=BR`)
         const movies = await data.json()
         console.log(movies);
     
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     }
     
     async function emBreve(){
-        const data = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&language=pt-BR&page=1&region=Br`)
+        const data = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&language=pt-BR&page=1region=BR`)
         const movies = await data.json()
         console.log(movies);
     
@@ -195,6 +195,10 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             poster.className = 'posterMovie'
             poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`
             poster.id = element.id
+
+            if(element.poster_path == null){
+                poster.src = `./icon/filme.svg`
+            }
 
     
             link.append(poster)
