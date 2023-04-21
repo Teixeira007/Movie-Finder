@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="./css/TelaLoginCadastro.css">
+    <link rel="stylesheet" href="../css/TelaLoginCadastro.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/validacao.css">
+    <link rel="stylesheet" href="../css/validacao.css">
 </head>
 <body>
     <div class="container">
@@ -41,29 +41,29 @@
                     </ul>
                 </div>
                 <p class="description description-second">ou use seu e-mail para se registrar:</p>
-                <form class="form">
+                <form class="form" method="POST" action="./servidor/cadastro.php">
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input class="form-signup" type="text" placeholder="Nome" data-tipo="nome" required>
+                        <input class="form-signup" name="name" type="text" placeholder="Nome" data-tipo="nome" required>
                         <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
 
                     
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input class="form-signup" type="email" data-tipo="email" placeholder="Email" required>
+                        <input class="form-signup" type="email" name="email" data-tipo="email" placeholder="Email" required>
                         <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
 
                     
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input class="form-signup" type="password" data-tipo="password" placeholder="Senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" required>
+                        <input class="form-signup" name="password" type="password" data-tipo="password" placeholder="Senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" required>
                         <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
                     
                     
-                    <button class="btn btn-second">Entrar</button>        
+                    <button type="submit" name="submit" class="btn btn-second">Entrar</button>        
                 </form>
             </div>
         </div>
@@ -96,27 +96,27 @@
                     </ul>
                 </div>
                 <p class="description description-second">ou use sua conta do e-mail:</p>
-                <form class="form ">
+                <form class="form " method="POST" action="./servidor/login.php">
                 
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input class="form-login" type="email" data-tipo="email" placeholder="Email" required>
+                        <input class="form-login" type="email" name="email" data-tipo="email" placeholder="Email" required>
                         <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
                 
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input class="form-login" data-tipo="password" type="password" placeholder="Password"  required>
+                        <input class="form-login" data-tipo="password" name="password" type="password" placeholder="Password"  required>
                         <span class="input-mensagem-erro">Este campo não está válido</span>
                     </label>
                 
                     <a class="password" href="#">Esqueceu sua senha?</a>
-                    <button class="btn btn-second">Entrar</button>
+                    <button type="submit" name="submit" class="btn btn-second">Entrar</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="js/TelaLoginCadastro.js"></script>
-    <script src="./js/validacao.js"></script>
+    <script src="../js/TelaLoginCadastro.js"></script>
+    <script src="../js/validacao.js"></script>
 </body>
 </html>

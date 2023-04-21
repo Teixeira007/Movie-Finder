@@ -167,7 +167,7 @@ async function cast(idMovie){
         imgCast.className = "imgCast"
 
         if(element.profile_path == null){
-            imgCast.src = `./icon/user-100.svg`
+            imgCast.src = `../icon/user-100.svg`
         }
 
         const linkCast = document.createElement('a')
@@ -237,7 +237,7 @@ async function resenha(idMovie){
         divAssess.className = 'divAssess'
 
         const imgIcon = document.createElement('img')
-        imgIcon.src = './icon/avaliar.png'
+        imgIcon.src = '../icon/avaliar.png'
         imgIcon.className = 'iconAssess'
 
         info.append(titleResenha)

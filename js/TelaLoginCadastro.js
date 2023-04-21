@@ -24,12 +24,12 @@ if(idTela == "login"){
 
 
 btnSignin.addEventListener("click", function () {
-   window.location.href =  `TelaLoginCadastro.html?id=login`
+   window.location.href =  `/login?id=login`
    body.className = "sign-in-js"; 
 });
 
 btnSignup.addEventListener("click", function () {
-    window.location.href =  `TelaLoginCadastro.html?id=registrar`
+    window.location.href =  `/cadastrar?id=cadastrar`
     body.className = "sign-up-js";
 })
 

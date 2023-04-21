@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'detailsMovie.html'
+            link.href = '/detalhes'
             link.className = 'link-poster'
           
     
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'detailsMovie.html'
+            link.href = '/detalhes'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'detailsMovie.html'
+            link.href = '/detalhes'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'detailsMovie.html'
+            link.href = '/detalhes'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     }
     
     async function emBreve(){
-        const data = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&language=pt-BR&page=1region=BR`)
+        const data = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&language=pt-BR&page=1&region=BR`)
         const movies = await data.json()
         console.log(movies);
     
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             containerMovie.className = 'containerMovie'
     
             const link = document.createElement('a')
-            link.href = 'detailsMovie.html'
+            link.href = '/detalhes'
             link.className = 'link-poster'
     
             const linkTitle = document.createElement('a')
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
             poster.id = element.id
 
             if(element.poster_path == null){
-                poster.src = `./icon/filme.svg`
+                poster.src = `../icon/filme.svg`
             }
 
     
@@ -332,12 +332,12 @@ document.addEventListener('DOMContentLoaded', async ()=> {
         
         login.addEventListener('click', event =>{
             event.preventDefault()
-            window.location.href =  `TelaLoginCadastro.html?id=login`
+            window.location.href =  `/login?id=login`
         })
         
         signup.addEventListener('click', event =>{
             event.preventDefault()
-            window.location.href =  `TelaLoginCadastro.html?id=registrar`
+            window.location.href =  `/cadastrar?id=cadastrar`
         })
     } 
     
