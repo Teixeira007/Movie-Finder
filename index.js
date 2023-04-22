@@ -3,6 +3,9 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const http = require('http');
 const mysql = require('mysql2')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 const port = 3000;
 let path = require('path');
@@ -42,7 +45,14 @@ connection.connect((err) => {
 
 
 app.get('/', function(req, res) {
-    res.render('index');
+    const userId = req.session.userId;
+    if(userId){
+      console.log('usuario logado');
+      res.render('index');
+    }else{
+      console.log('visitante');
+      res.render('index');
+    }
 });
 
 app.get('/detalhes', (req, res) => {
@@ -59,25 +69,75 @@ app.get('/cadastrar', (req, res) => {
 
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
-    connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
+  
+    // Consulta SQL para obter o hash da senha do usuário
+    const query = 'SELECT id, password FROM users WHERE email = ?';
+    connection.query(query, [email], (error, results) => {
       if (error) throw error;
+  
       if (results.length > 0) {
-        // Se as credenciais estiverem corretas, armazena o ID do usuário na sessão
-        req.session.userId = results[0].id;
-        res.redirect('/');
+        const userId = results[0].id;
+        const hash = results[0].password;
+  
+        // Comparando a senha em texto puro com a senha criptografada armazenada no banco de dados
+        bcrypt.compare(password, hash, function(err, result) {
+          if (result) {
+            // Se as credenciais estiverem corretas, armazena o ID do usuário na sessão
+            req.session.userId = userId;
+            res.redirect('/dashboard');
+          } else {
+            res.redirect('/login?id=login&error=Email ou senha incorreto.');
+          }
+        });
       } else {
-        res.redirect('/login?id=login&error=Credenciais inválidas.');
+        res.redirect('/login?id=login&error=Email ou senha incorreto.');
       }
     });
+});
+
+app.post('/cadastro', (req, res) => {
+  const { name, email, password } = req.body;
+
+  const queryEmailExist = "SELECT * FROM users WHERE email = ?" ;
+  connection.query(queryEmailExist, [email], (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.redirect('/cadastrar?id=cadastrar&error=Este email já está cadastrado no sistema');
+    } else {
+        // Criptografando a senha
+        bcrypt.hash(password, saltRounds, function(err, hash) {
+            // Insere o novo usuário no banco de dados
+            connection.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hash], (error, results) => {
+                if (error) throw error;
+                res.redirect('/login?id=login');
+            });
+        });
+        
+    }
   });
+
   
-  app.post('/cadastro', (req, res) => {
-    const { name, email, password } = req.body;
-    connection.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password], (error, results) => {
+});
+
+app.get('/userId', function(req, res) {
+  const userId = req.session.userId;
+  res.json({ userId: userId });
+});
+
+app.get('/dashboard', (req, res) => {
+  const userId = req.session.userId;
+  if(userId){
+    // Consulta SQL para obter o nome do usuário
+    const query = 'SELECT * FROM users WHERE id = ?';
+    connection.query(query, [userId], (error, results) => {
       if (error) throw error;
-      res.redirect('/login?id=login');
+      const name = results[0].name;
+      const created_at = results[0].created_at;
+      const email = results[0].email;
+      res.render('perfil.ejs', { name, email, created_at});
     });
-  });
+  } 
+});
 
 app.listen(port, ()=>{
     console.log('servidor rodando na porta:', port);

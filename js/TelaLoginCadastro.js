@@ -35,8 +35,11 @@ btnSignup.addEventListener("click", function () {
 
 
 let errorTela = urlParams.get('error')
-if(errorTela){
-    const divError = document.querySelector('.alert-danger')
-    divError.textContent = 'Email ou Senha incorreta'
+if(idTela=='login' && errorTela){
+    const divError = document.querySelector('.alert-danger-login')
+    divError.textContent = `${errorTela}`
+}else if(idTela =='cadastrar' && errorTela ){
+    const divError = document.querySelector('.alert-danger-signup')
+    divError.textContent = `${errorTela}`
 }
 

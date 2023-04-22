@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <title>Perfil</title>
+</head>
+<body>
+    <!-- <h1>Bem Vindo <%= name%> <%= email%> <%= created_at%> </h1> -->
+    <div class="container">
+        <div class="menu">
+            <ul class="menu-left">
+                <a href="/"><img src="../img/logo7-.png" alt="" class="logo"></a>
+                <li class="menu-itens">Populares</li>
+                <li class="menu-itens">Em Cartaz</li>
+                <li class="menu-itens">Próximas Estreias</li>
+                <li class="menu-itens">Mais bem Avaliados</li>
+            </ul>
+            <ul class="menu-right">
+                <input type="text" placeholder="Buscar..." class="search-box"></input>
+                <div class="icons-menu-right">
+                    <a class="login" href="/login?id=login">Entrar</a>
+                    <a class="signup" href="/cadastrar?id=cadastrar">Registrar</a>
+                    <button class="search-icon" ><img class="img-icon-search" src="../icon/search.png" alt=""></button>
+                    <img class="profile" src="../icon/profile.png" alt="">
+                </div>
+            </ul>
+        </div>
+        <div class="banner">
+            <div class="banner-shadow">
+                <div class="iconUser"><%=name%></div>
+                <div class="profile-info">
+                    <div class="info-primary-profile">
+                        <p class="name-profile"><%=name%></p>
+                        <span class="date-profile"><%=created_at%></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/logadoOrNot.js"></script>
+    <script src="../js/global.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
