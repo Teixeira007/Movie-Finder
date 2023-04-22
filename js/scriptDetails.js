@@ -68,7 +68,7 @@ async function buildDetailsMovies(){
     credits(idMovie)
     cast(idMovie)
     resenha(idMovie)
-    ratingMovie(idMovie)
+    
 }
 
 
@@ -259,12 +259,33 @@ async function resenha(idMovie){
 
 }
 
-async function ratingMovie(idMovie){
-    
-    // const moviesRating = await data.json()
+async function eventsButtonsList(){
+    const buttonLikedList = document.querySelector('.buttonLikedList')
+    const buttonInterestList = document.querySelector('.buttonInterestList')
+    const buttonToAssess = document.querySelector('.buttonToAssess')
+    const urlParams = new URLSearchParams(window.location.search)
+    const idMovie = urlParams.get('id')
 
-    // console.log(moviesRating);
+    buttonInterestList.addEventListener('click', event =>{
+
+        // createFavoritesList(idMovie);
+        fetch(`/favoritesMovie/${idMovie}`, {
+            method: 'POST',
+            credentials: 'same-origin'
+        })
+        .then(response =>{
+            if(response.ok) console.log('filme adicionado a lista')
+            else{
+                console.log('Filme não cadastrado')
+            }
+        }).catch(error =>{
+            console.log(error);
+        })
+
+    })
 
 }
+
 mouseOverList()
 buildDetailsMovies()
+eventsButtonsList()

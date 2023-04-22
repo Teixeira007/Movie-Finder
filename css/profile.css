@@ -61,3 +61,17 @@
     color: #ccc;
     z-index: 1;
 }
+
+.containerMovie{
+    width: 150px;
+}
+
+/* .titleFavorites{
+    padding: 3rem;
+}
+
+.favoritesMovie{
+    display: flex;
+    gap: 1rem;
+    padding-left: 3rem
+} */

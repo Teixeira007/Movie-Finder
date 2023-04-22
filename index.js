@@ -67,6 +67,7 @@ app.get('/cadastrar', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/TelaLoginCadastro.html'));
 })
 
+// Realizando login do usuário
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
   
@@ -95,9 +96,11 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Realizando o cadastro de usuário
 app.post('/cadastro', (req, res) => {
   const { name, email, password } = req.body;
 
+//Verifica se tem um usuário cadastrado com esse email
   const queryEmailExist = "SELECT * FROM users WHERE email = ?" ;
   connection.query(queryEmailExist, [email], (error, results) => {
     if (error) throw error;
@@ -113,17 +116,20 @@ app.post('/cadastro', (req, res) => {
             });
         });
         
-    }
-  });
+      }
+    });
 
   
 });
 
+// Recuperando o userid session para saber se o usuário estar logado ou não
 app.get('/userId', function(req, res) {
   const userId = req.session.userId;
   res.json({ userId: userId });
 });
 
+
+// Quando o usuário logar será levado para a página perfil de usuário
 app.get('/dashboard', (req, res) => {
   const userId = req.session.userId;
   if(userId){
@@ -138,6 +144,47 @@ app.get('/dashboard', (req, res) => {
     });
   } 
 });
+
+// Adicionar filme favorito no banco de dados
+app.post('/favoritesMovie/:id', (req, res) =>{
+    const userId = req.session.userId;
+    const movieId = req.params.id;
+
+    if(userId){
+        const queryMovieExist = 'SELECT * FROM favoriteMovies WHERE idMovie = ?'
+        connection.query(queryMovieExist, [movieId], (error, results) =>{
+            if(error) throw error;
+            // res.render('/detalhes?id=movieId')
+            if (results.length > 0) {
+                // res.redirect('/cadastrar?id=cadastrar&error=Este email já está cadastrado no sistema');
+            } else {
+                connection.query('INSERT INTO favoriteMovies (idMovie, idUser) values (?,?)', [movieId, userId], (error, results) =>{
+                    if(error) throw error;
+                    // Fica na tela msm
+                })
+            }
+        })
+
+    }
+})
+
+// Pegar lista dos ids dos filmes favoritos
+app.get('/favoritesMovie', (req, res) =>{
+    const listMovie = [];
+    const userId = req.session.userId;
+
+    // Pega todos os ids de filmes que estão na lista de favoritos
+    connection.query('SELECT idMovie FROM favoriteMovies WHERE idUser = ?', [userId], (error, results) =>{
+        if(error) throw error;
+        results.forEach(element =>{
+            listMovie.push(element.idMovie)
+        })
+
+        res.send(listMovie)
+    })
+
+    
+})
 
 app.listen(port, ()=>{
     console.log('servidor rodando na porta:', port);
