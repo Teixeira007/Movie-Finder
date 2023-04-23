@@ -161,3 +161,7 @@
 .footer-end ul li a:hover{
     text-decoration: underline;
 }
+
+.remove{
+    display: none;
+}

@@ -74,5 +74,93 @@ async function createFavoritesList(idMovie){
     containerMovie.append(link)
     containerMovie.append(linkTitle)
     container.append(containerMovie)
-    link.addEventListener('click', detailsMovie)
+    // link.addEventListener('click', detailsMovie
 }
+
+
+
+
+async function interestList(){
+    const data = await fetch('/interestList')
+    const teste = await data.json();
+    
+    console.log(teste)
+    teste.forEach(element => {
+        createInterestList(element)
+    });
+}
+
+interestList()
+
+async function createInterestList(idMovie){
+    
+
+    const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}?api_key=${api_key}&language=pt-BR`)
+    const movie = await data.json()
+
+    
+    console.log(movie);
+    const container = document.querySelector('#listMovieInterest')
+
+    // const titleFavorites = document.createElement('h3')
+    // titleFavorites.textContent = "Lista de Filmes Favoritos"
+    // titleFavorites.className = 'titleFavorites'
+
+    const containerMovie = document.createElement('li')
+    containerMovie.className = 'containerMovie'
+
+    const link = document.createElement('a')
+    link.href = `/detalhes?id=${idMovie}`
+    link.className = 'link-poster'
+
+    const linkTitle = document.createElement('a')
+    linkTitle.href = '#'
+    linkTitle.className = 'link-title'
+
+    const title = document.createElement('span')
+    title.className = 'titleMovie'
+
+    movie.title ? title.textContent = movie.title :title.textContent = movie.name
+
+    const poster = document.createElement('img')
+    poster.className = 'posterMovie'
+    poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    poster.id = movie.id
+
+    link.append(poster)
+    linkTitle.append(title)
+
+    // containerMovie.append(titleFavorites)
+    containerMovie.append(link)
+    containerMovie.append(linkTitle)
+    container.append(containerMovie)
+    // link.addEventListener('click', detailsMovie)
+}
+
+
+async function carousel(){
+    const buttonRight = document.querySelectorAll('.buttonRight');
+    const buttonLeft = document.querySelectorAll('.buttonLeft');
+
+    const carousel = document.querySelector('.carousel');
+    const carouselNow = document.querySelector('#carousel-interest')
+    
+    // console.log(carousel.scrollleft);
+    
+    buttonRight[0].addEventListener('click', event =>{
+        carousel.scrollLeft += 1137;
+    })
+
+    buttonLeft[0].addEventListener('click', event =>{
+        carousel.scrollLeft -=1137;
+    })
+    buttonRight[1].addEventListener('click', event =>{
+        carouselNow.scrollLeft += 1137;
+    })
+
+    buttonLeft[1].addEventListener('click', event =>{
+        carouselNow.scrollLeft -=1137;
+    })
+}
+
+carousel()

@@ -118,8 +118,6 @@ app.post('/cadastro', (req, res) => {
         
       }
     });
-
-  
 });
 
 // Recuperando o userid session para saber se o usuário estar logado ou não
@@ -168,6 +166,30 @@ app.post('/favoritesMovie/:id', (req, res) =>{
     }
 })
 
+// Adicionar filme na lista de interesses -salvando no banco de dados
+app.post('/interestList/:id', (req, res) =>{
+  const userId = req.session.userId;
+  const movieId = req.params.id;
+
+  if(userId){
+      const queryMovieExist = 'SELECT * FROM interestList WHERE idMovie = ?'
+      connection.query(queryMovieExist, [movieId], (error, results) =>{
+          if(error) throw error;
+          // res.render('/detalhes?id=movieId')
+          if (results.length > 0) {
+              // res.redirect('/cadastrar?id=cadastrar&error=Este email já está cadastrado no sistema');
+          } else {
+              connection.query('INSERT INTO interestList (idMovie, idUser) values (?,?)', [movieId, userId], (error, results) =>{
+                  if(error) throw error;
+                  // Fica na tela msm
+              })
+          }
+      })
+
+  }
+})
+
+
 // Pegar lista dos ids dos filmes favoritos
 app.get('/favoritesMovie', (req, res) =>{
     const listMovie = [];
@@ -181,10 +203,27 @@ app.get('/favoritesMovie', (req, res) =>{
         })
 
         res.send(listMovie)
-    })
-
-    
+    }) 
 })
+
+// Pegar lista dos ids dos filmes da lista de interesse
+app.get('/interestList', (req, res) =>{
+  const listMovie = [];
+  const userId = req.session.userId;
+
+  // Pega todos os ids de filmes que estão na lista de interesse
+  connection.query('SELECT idMovie FROM interestList WHERE idUser = ?', [userId], (error, results) =>{
+      if(error) throw error;
+      results.forEach(element =>{
+          listMovie.push(element.idMovie)
+      })
+
+      res.send(listMovie)
+  })
+
+  
+})
+
 
 app.listen(port, ()=>{
     console.log('servidor rodando na porta:', port);

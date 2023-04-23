@@ -284,6 +284,21 @@ async function eventsButtonsList(){
 
     })
 
+    buttonLikedList.addEventListener('click', event=>{
+        fetch(`/interestList/${idMovie}`, {
+            method: 'POST',
+            credentials: 'same-origin'
+        })
+        .then(response =>{
+            if(response.ok) console.log('filme adicionado a lista')
+            else{
+                console.log('Filme não cadastrado')
+            }
+        }).catch(error =>{
+            console.log(error);
+        })
+    })
+
 }
 
 mouseOverList()
