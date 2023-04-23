@@ -277,7 +277,6 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     }
     carousel()
     
-    searchMenu()
     
     async function signupSignin(){
         const login = document.querySelector('.login')

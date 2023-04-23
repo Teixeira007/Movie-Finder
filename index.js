@@ -67,6 +67,11 @@ app.get('/cadastrar', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/TelaLoginCadastro.html'));
 })
 
+app.get('/logout', (req, res) =>{
+    delete req.session.userId;
+    res.redirect('/')
+})
+
 // Realizando login do usuário
 app.post('/login', (req, res) => {
     const { email, password } = req.body;

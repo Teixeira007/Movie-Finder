@@ -43,3 +43,13 @@ async function searchMenu(){
 }
 
 searchMenu()
+async function subMenuProfile(){
+    const profile = document.querySelector('.profile')
+
+    profile.addEventListener('click', event=>{
+        const divSubMenu = document.querySelector('.profile-submenu')
+        divSubMenu.style.display = 'flex'
+    })
+}
+
+subMenuProfile()
