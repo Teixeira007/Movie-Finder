@@ -15,10 +15,9 @@
         <div class="menu">
             <ul class="menu-left">
                 <a href="/"><img src="../img/logo7-.png" alt="" class="logo"></a>
-                <li class="menu-itens">Populares</li>
-                <li class="menu-itens">Em Cartaz</li>
-                <li class="menu-itens">Próximas Estreias</li>
-                <li class="menu-itens">Mais bem Avaliados</li>
+                <a href="#favorites"><li class="menu-itens">Favoritos</li></a>
+                <a href="#interest"><li class="menu-itens">Assitir Mais Tarde</li></a>
+                
             </ul>
             <ul class="menu-right">
                 <input type="text" placeholder="Buscar..." class="search-box"></input>
@@ -54,7 +53,7 @@
         </div>
         <!-- <h3 class="titleFavorites">Lista de Filmes Favoritos</h3>
         <div class="favoritesMovie"> -->
-        <h1 class="title-carousel">Lista de Filmes Favoritos</h1>
+        <h1 id="favorites" class="title-carousel">Lista de Filmes Favoritos</h1>
         <div class="wrapper">
             <button class="buttonLeft"><img src="../icon/angleLeft.png" alt=""></button>
             <div class="carousel">
@@ -63,7 +62,7 @@
 
             <button class="buttonRight"><img src="../icon/angleRight.png" alt=""></button>
         </div>
-        <h1 class="title-carousel">Lista para Assistir mais tarde</h1>
+        <h1 id="interest" class="title-carousel">Lista para Assistir mais tarde</h1>
         <div class="wrapper">
             <button class="buttonLeft"><img src="../icon/angleLeft.png" alt=""></button>
             <div class="carousel" id="carousel-interest">

@@ -122,6 +122,20 @@
     transition: all 0.3s;
 }
 
+.toAssessStar{
+    display: none;
+    background-color: #0077b6;
+    margin-top: 0.5rem;
+    gap: 0.4rem;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+
+}
+.toAssessStar img{
+    width: 25px;
+    cursor: pointer;
+}
+
 .info-creditos{
     display: grid;
     margin-top: 2rem;

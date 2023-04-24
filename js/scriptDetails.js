@@ -103,7 +103,12 @@ async function mouseOverList(){
     })
 
     buttonToAssess.addEventListener('mouseover', event =>{
-        spanToAssess.style.display = 'block';
+        const star = document.querySelector('.toAssessStar')
+        if(star.style.display == 'flex'){
+
+        }else{
+            spanToAssess.style.display = 'block';
+        }
     })
 
     buttonToAssess.addEventListener('mouseout', event =>{
@@ -265,6 +270,7 @@ async function eventsButtonsList(){
     const buttonToAssess = document.querySelector('.buttonToAssess')
     const urlParams = new URLSearchParams(window.location.search)
     const idMovie = urlParams.get('id')
+    // console.log(idMovie)
 
     buttonInterestList.addEventListener('click', event =>{
 
@@ -299,8 +305,46 @@ async function eventsButtonsList(){
         })
     })
 
+    buttonToAssess.addEventListener('click', event =>{
+        const star = document.querySelector('.toAssessStar')
+        const spanToAssess = document.querySelector('.toAssess')
+
+        star.style.display = 'flex'
+        spanToAssess.style.display = 'none'
+    })
+
 }
 
+async function toAssessStar(){
+    const stars = document.querySelectorAll('.star')
+    stars.forEach(element => {
+        element.addEventListener('click', event=>{
+            const note = element.id.split('_')[1]
+            toAssessStarNote(note)
+        })
+    })
+}
+
+async function toAssessStarNote(note){
+    const urlParams = new URLSearchParams(window.location.search)
+    const idMovie = urlParams.get('id')
+    // console.log(idMovie);
+    // console.log(note);
+
+      fetch(`/rating/${idMovie}/${note}`, {
+        method: 'POST',
+        credentials: 'same-origin'
+    })
+    .then(response =>{
+        if(response.ok) console.log('filme avaliado')
+        else{
+            console.log('Filme não avaliado')
+        }
+    }).catch(error =>{
+        console.log(error);
+    })
+}
+toAssessStar()
 mouseOverList()
 buildDetailsMovies()
 eventsButtonsList()

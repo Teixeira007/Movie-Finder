@@ -14,10 +14,10 @@
         <div class="menu">
             <ul class="menu-left">
                 <a href="/"><img src="../img/logo7-.png" alt="" class="logo"></a>
-                <li class="menu-itens">Populares</li>
-                <li class="menu-itens">Em Cartaz</li>
-                <li class="menu-itens">Próximas Estreias</li>
-                <li class="menu-itens">Mais bem Avaliados</li>
+                <a href="#popular"><li class="menu-itens">Populares</li></a>
+                <a href="#cartaz"><li class="menu-itens">Em Cartaz</li></a>
+                <a href="#emBreve"><li class="menu-itens">Próximas Estreias</li></a>
+                <a href="#topRanqued"><li class="menu-itens">Mais bem Avaliados</li></a>
             </ul>
             <ul class="menu-right">
                 <input type="text" placeholder="Buscar..." class="search-box"></input>
@@ -42,7 +42,7 @@
             </ul>
         </div>
 
-        <h1 class="title-carousel">Filmes Populares</h1>
+        <h1 id="popular" class="title-carousel">Filmes Populares</h1>
         <div class="wrapper">
             <button class="buttonLeft"><img src="../icon/angleLeft.png" alt=""></button>
             <div class="carousel">
@@ -62,7 +62,7 @@
             <button class="buttonRight"><img src="../icon/angleRight.png" alt=""></button>
         </div>
 
-        <h1 class="title-carousel">Em Cartaz</h1>
+        <h1 id="cartaz" class="title-carousel">Em Cartaz</h1>
         <div class="wrapper">
             <button class="buttonLeft"><img src="../icon/angleLeft.png" alt=""></button>
             <div id="carousel-cartaz" class="carousel">
@@ -72,7 +72,7 @@
             <button class="buttonRight"><img src="../icon/angleRight.png" alt=""></button>
         </div>
 
-        <h1 class="title-carousel">Melhores avaliados</h1>
+        <h1 id="topRanqued" class="title-carousel">Melhores avaliados</h1>
         <div class="wrapper">
             <button class="buttonLeft"><img src="../icon/angleLeft.png" alt=""></button>
             <div id="carousel-top" class="carousel">
@@ -81,7 +81,7 @@
 
             <button class="buttonRight"><img src="../icon/angleRight.png" alt=""></button>
         </div>
-        <h1 class="title-carousel">Em Breve</h1>
+        <h1 id="emBreve" class="title-carousel">Em Breve</h1>
         <div class="wrapper">
             <button class="buttonLeft"><img src="../icon/angleLeft.png" alt=""></button>
             <div id="carousel-breve" class="carousel">

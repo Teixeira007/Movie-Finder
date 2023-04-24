@@ -24,6 +24,11 @@
     gap: 2rem;
 }
 
+.menu-left a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .menu-right{
     display: flex;
     justify-content: center;

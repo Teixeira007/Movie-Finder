@@ -194,6 +194,34 @@ app.post('/interestList/:id', (req, res) =>{
   }
 })
 
+app.post('/rating/:id/:note', (req, res) =>{
+  const userId = req.session.userId;
+  const movieId = req.params.id;
+  const note = req.params.note;
+
+  console.log(movieId);
+
+  if(userId){
+    const queryMovieRating = 'SELECT * FROM rating WHERE idMovie = ? AND idUser = ?';
+    connection.query(queryMovieRating, [movieId, userId], (error, results) =>{
+      if(error) throw error;
+      if(results.length>0){
+        // Atualizar avaliação dos filmes
+        const queryAlterRating = 'UPDATE rating SET note = ? WHERE idMovie = ? AND idUser = ?';
+        connection.query(queryAlterRating, [note, movieId, userId], (error, results) =>{
+            if(error) throw error;
+        })
+      }else{
+        // Inserir Avaliação dos filmes
+          connection.query('INSERT INTO rating (idMovie, idUser, note) values (?,?,?)', [movieId, userId, note], (error, results) =>{
+              if(error) throw error;
+              
+          })
+      }
+    })
+  }
+})
+
 
 // Pegar lista dos ids dos filmes favoritos
 app.get('/favoritesMovie', (req, res) =>{

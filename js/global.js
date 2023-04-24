@@ -48,7 +48,12 @@ async function subMenuProfile(){
 
     profile.addEventListener('click', event=>{
         const divSubMenu = document.querySelector('.profile-submenu')
-        divSubMenu.style.display = 'flex'
+        if(divSubMenu.style.display == 'flex'){
+            divSubMenu.style.display = 'none'
+        }else{
+            divSubMenu.style.display = 'flex'
+
+        }
     })
 }
 
