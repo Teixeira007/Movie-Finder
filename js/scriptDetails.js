@@ -343,6 +343,9 @@ async function toAssessStarNote(note){
     }).catch(error =>{
         console.log(error);
     })
+
+    const star = document.querySelector('.toAssessStar')
+    star.style.display = 'none'
 }
 toAssessStar()
 mouseOverList()

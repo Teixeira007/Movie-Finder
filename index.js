@@ -194,6 +194,7 @@ app.post('/interestList/:id', (req, res) =>{
   }
 })
 
+// Adicionar uma avaliação a um filme
 app.post('/rating/:id/:note', (req, res) =>{
   const userId = req.session.userId;
   const movieId = req.params.id;
@@ -253,8 +254,20 @@ app.get('/interestList', (req, res) =>{
 
       res.send(listMovie)
   })
+})
 
-  
+app.get('/rating/:id', (req, res) =>{
+  const userId = req.session.userId;
+  const movieId = req.params.id;
+
+
+  // Pega a nota do filme que você avaliou
+  connection.query('SELECT note FROM rating WHERE idUser = ? AND idMovie = ?', [userId, movieId], (error, results) =>{
+      if(error) throw error;
+      
+
+      res.send(results)
+  })
 })
 
 
