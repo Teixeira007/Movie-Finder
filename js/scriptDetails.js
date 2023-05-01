@@ -29,6 +29,9 @@ async function buildDetailsMovies(){
     date.textContent = moviesDetails.release_date
     time.textContent = `${moviesDetails.runtime} min`
 
+    const voteAvarage = document.querySelector('.voteAvarage')
+    voteAvarage.textContent = moviesDetails.vote_average.toFixed(1)
+
     const contGenres = moviesDetails.genres.length;
     for(let i=0; i<contGenres;i++){
         gender.textContent += ` - ${moviesDetails.genres[i].name} `
@@ -124,7 +127,7 @@ async function credits(idMovie){
     const moviesCredits = await data.json()
 
     const credits = moviesCredits.crew.filter(a => a.job == "Characters" || a.job == "Writer" || a.job == "Director" || a.job == "Story");
-
+    // console.log(credits);
     const infoCredits = document.querySelector('.info-creditos');
     credits.forEach(element => {
         const divCredits = document.createElement('div')
@@ -140,14 +143,18 @@ async function credits(idMovie){
         const linkPerson = document.createElement('a')
         linkPerson.id = element.id
         linkPerson.className = "linkPerson";
-        linkPerson.href = "#"
+        linkPerson.href = ``
 
         linkPerson.append(nameCredtits)
         divCredits.append(linkPerson)
         divCredits.append(jobCredits)
         infoCredits.append(divCredits)
+
+
     })
 }
+
+
 
 async function cast(idMovie){
     const data = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${api_key}&language=en-US`)
@@ -155,7 +162,7 @@ async function cast(idMovie){
 
     // console.log(moviesCredits);
     const cast = moviesCredits.cast.filter(a => a.known_for_department == "Acting");
-    // console.log(cast);
+    console.log(cast);
 
     const divCast = document.querySelector('.cast')
     cast.forEach(element => {
@@ -170,14 +177,15 @@ async function cast(idMovie){
         const imgCast = document.createElement('img')
         imgCast.src = `https://image.tmdb.org/t/p/w500${element.profile_path}`
         imgCast.className = "imgCast"
+        imgCast.id = element.id
 
         if(element.profile_path == null){
             imgCast.src = `../icon/user-100.svg`
         }
 
         const linkCast = document.createElement('a')
-        linkCast.href = "#"
-        linkCast.id = element.id
+        linkCast.href = "/personDetails"
+        // linkCast.id = element.id
 
         const divPerson = document.createElement('div')
         divPerson.className = "person"
@@ -187,8 +195,18 @@ async function cast(idMovie){
         divPerson.append(nameCast)
         divPerson.append(characterCast)
         divCast.append(divPerson)
+
+        linkCast.addEventListener('click', detailsPerson)
     })
 
+}
+
+async function detailsPerson(event){
+    event.preventDefault();
+    const idPerson = event.target.id
+    // console.log(idPerson);
+
+    window.location.href =  `${event.target.parentNode.href}?id=${idPerson}` ;
 }
 
 async function resenha(idMovie){
@@ -309,8 +327,12 @@ async function eventsButtonsList(){
         const star = document.querySelector('.toAssessStar')
         const spanToAssess = document.querySelector('.toAssess')
 
-        star.style.display = 'flex'
-        spanToAssess.style.display = 'none'
+        if(star.style.display == 'flex'){
+            star.style.display = 'none'
+        }else{
+            star.style.display = 'flex'
+            spanToAssess.style.display = 'none'
+        }
     })
 
 }

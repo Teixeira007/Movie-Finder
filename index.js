@@ -56,7 +56,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/detalhes', (req, res) => {
-res.sendFile(path.join(__dirname, '/views/detailsMovie.html'));
+  res.sendFile(path.join(__dirname, '/views/detailsMovie.html'));
 });
   
 app.get('/login', (req, res) => {
@@ -70,6 +70,11 @@ app.get('/cadastrar', (req, res) => {
 app.get('/logout', (req, res) =>{
     delete req.session.userId;
     res.redirect('/')
+})
+
+// Fazer um get nos detalhes da pessoa (autor, diretor, etc)
+app.get('/personDetails', (req, res) =>{
+  res.sendFile(path.join(__dirname, '/views/detailsPerson.html'));
 })
 
 // Realizando login do usuário
@@ -269,6 +274,8 @@ app.get('/rating/:id', (req, res) =>{
       res.send(results)
   })
 })
+
+
 
 
 app.listen(port, ()=>{

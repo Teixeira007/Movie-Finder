@@ -90,6 +90,11 @@
     width: 100px;
 }
 
+.voteAvarage{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
 .likedList{
     margin-top: 1rem;
     display: none;
