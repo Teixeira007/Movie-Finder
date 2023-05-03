@@ -51,7 +51,7 @@ const mensagensDeErro = {
     },
     password: {
         valueMissing: 'O campo de senha não pode estar vazio.',
-        patternMismatch: 'A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos.'
+        patternMismatch: 'A senha deve ter no mínimo 6 caracteres, letra maiúscula, número e letra minuscula.'
     }
 }
 
