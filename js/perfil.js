@@ -22,12 +22,15 @@ dateProfile.textContent = `Menbro desde do dia ${day} de ${month} de ${year} `
 
 async function favoritesMovie(){
     const data = await fetch('/favoritesMovie')
-    const teste = await data.json();
+    const movies = await data.json();
+    recommendations(movies)
     
-    console.log(teste)
-    teste.forEach(element => {
+
+    movies.forEach(element => {
         createFavoritesList(element)
     });
+
+
 }
 
 favoritesMovie()
@@ -144,6 +147,7 @@ async function carousel(){
 
     const carousel = document.querySelector('.carousel');
     const carouselNow = document.querySelector('#carousel-interest')
+    const carouselRec = document.querySelector('#carousel-recommendations')
     
     // console.log(carousel.scrollleft);
     
@@ -161,7 +165,66 @@ async function carousel(){
     buttonLeft[1].addEventListener('click', event =>{
         carouselNow.scrollLeft -=1137;
     })
+
+    buttonRight[2].addEventListener('click', event =>{
+        carouselRec.scrollLeft += 1137;
+    })
+
+    buttonLeft[2].addEventListener('click', event =>{
+        carouselRec.scrollLeft -=1137;
+    })    
 }
 
+
+async function recommendations(favoritesMovies){
+    console.log(favoritesMovies);
+    favoritesMovies.forEach(async element => {
+        const data = await fetch(`https://api.themoviedb.org/3/movie/${element}/recommendations?api_key=${api_key}&page=1&language=pt-BR`)
+        const movieRec = await data.json()
+        // console.log(movieRec);
+
+        const movieTop2 = movieRec.results.slice(0,2)
+        console.log(movieTop2)
+        movieTop2.forEach(item =>{
+            const container = document.querySelector('#listMovieRecommendations')  
+            const containerMovie = document.createElement('li')
+            containerMovie.className = 'containerMovie'
+
+            const link = document.createElement('a')
+            link.href = `/detalhes?id=${element}`
+            link.className = 'link-poster'
+
+            const linkTitle = document.createElement('a')
+            linkTitle.href = '#'
+            linkTitle.className = 'link-title'
+
+            const title = document.createElement('span')
+            title.className = 'titleMovie'
+
+            item.title ? title.textContent = item.title :title.textContent = item.name
+
+            const poster = document.createElement('img')
+            poster.className = 'posterMovie'
+            poster.src = `https://image.tmdb.org/t/p/w500${item.poster_path}`
+            poster.id = item.id
+
+            if(item.poster_path == null){
+                poster.src = `../icon/filme.svg`
+            }
+
+            link.append(poster)
+            linkTitle.append(title)
+
+            // containerMovie.append(titleFavorites)
+            containerMovie.append(link)
+            containerMovie.append(linkTitle)
+            container.append(containerMovie)
+
+        })
+        
+    })
+
+}
+recommendations()
 carousel()
 
