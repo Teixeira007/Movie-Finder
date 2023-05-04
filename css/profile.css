@@ -76,3 +76,15 @@
     padding-left: 3rem
 } */
 
+.recommendations{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#carousel-recommendations h1{
+    font-size: 1.5rem;
+    border-bottom: 4px solid #0077b6;
+    margin-bottom: 0.6rem;
+}

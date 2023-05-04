@@ -42,12 +42,9 @@ async function createFavoritesList(idMovie){
     const movie = await data.json()
 
     
-    console.log(movie);
+    // console.log(movie);
     const container = document.querySelector('#listMovieFavorites')
 
-    // const titleFavorites = document.createElement('h3')
-    // titleFavorites.textContent = "Lista de Filmes Favoritos"
-    // titleFavorites.className = 'titleFavorites'
 
     const containerMovie = document.createElement('li')
     containerMovie.className = 'containerMovie'
@@ -87,7 +84,7 @@ async function interestList(){
     const data = await fetch('/interestList')
     const teste = await data.json();
     
-    console.log(teste)
+    // console.log(teste)
     teste.forEach(element => {
         createInterestList(element)
     });
@@ -102,12 +99,8 @@ async function createInterestList(idMovie){
     const movie = await data.json()
 
     
-    console.log(movie);
+    // console.log(movie);
     const container = document.querySelector('#listMovieInterest')
-
-    // const titleFavorites = document.createElement('h3')
-    // titleFavorites.textContent = "Lista de Filmes Favoritos"
-    // titleFavorites.className = 'titleFavorites'
 
     const containerMovie = document.createElement('li')
     containerMovie.className = 'containerMovie'
@@ -147,7 +140,6 @@ async function carousel(){
 
     const carousel = document.querySelector('.carousel');
     const carouselNow = document.querySelector('#carousel-interest')
-    const carouselRec = document.querySelector('#carousel-recommendations')
     
     // console.log(carousel.scrollleft);
     
@@ -165,33 +157,58 @@ async function carousel(){
     buttonLeft[1].addEventListener('click', event =>{
         carouselNow.scrollLeft -=1137;
     })
-
-    buttonRight[2].addEventListener('click', event =>{
-        carouselRec.scrollLeft += 1137;
-    })
-
-    buttonLeft[2].addEventListener('click', event =>{
-        carouselRec.scrollLeft -=1137;
-    })    
 }
 
 
 async function recommendations(favoritesMovies){
-    console.log(favoritesMovies);
+    // console.log(favoritesMovies);
+
+   
+
     favoritesMovies.forEach(async element => {
+         // Consulta na api de filmes pelo id para pegar o nome
+        dataMovie = await fetch(`https://api.themoviedb.org/3/movie/${element}?api_key=${api_key}&language=pt-BR`)
+        moviesDetails = await dataMovie.json()
+        // nome do filme
+        const nameMovie = moviesDetails.title
+
+        // Consulta api para pegar os filmes recomendados de acordo com o id do filme
         const data = await fetch(`https://api.themoviedb.org/3/movie/${element}/recommendations?api_key=${api_key}&page=1&language=pt-BR`)
         const movieRec = await data.json()
-        // console.log(movieRec);
 
-        const movieTop2 = movieRec.results.slice(0,2)
-        console.log(movieTop2)
-        movieTop2.forEach(item =>{
-            const container = document.querySelector('#listMovieRecommendations')  
+        // pegando os 8 primeiros filmes recomendados
+        const movieTop8 = movieRec.results.slice(0,8)
+
+        const h1TitleTopics = document.createElement('h1')
+        h1TitleTopics.textContent = `Por que você assistiu ${nameMovie}`
+        h1TitleTopics.id = 'recommendations'
+
+        const divContainer = document.querySelector('.recommendations')
+
+        const divWrapper = document.createElement('div')
+        divWrapper.className = "wrapper wrapper-recommendations"
+
+        const divCarousel = document.createElement('div')
+        divCarousel.className = 'carousel'
+        divCarousel.id = 'carousel-recommendations'
+
+        const ulListMovie = document.createElement('ul')
+        ulListMovie.className = 'listMovie'
+        ulListMovie.id = 'listMovieRecommendations'
+
+        divCarousel.append(h1TitleTopics)
+        divCarousel.append(ulListMovie)
+        divWrapper.append(divCarousel)
+        divContainer.append(divWrapper)
+
+        // Varrendo a lista com os 8 filmes e criando os banners para cada um
+        movieTop8.forEach(item =>{
+        
             const containerMovie = document.createElement('li')
             containerMovie.className = 'containerMovie'
 
             const link = document.createElement('a')
-            link.href = `/detalhes?id=${element}`
+            link.href = `/detalhes?id=${item.id}`
             link.className = 'link-poster'
 
             const linkTitle = document.createElement('a')
@@ -209,16 +226,16 @@ async function recommendations(favoritesMovies){
             poster.id = item.id
 
             if(item.poster_path == null){
-                poster.src = `../icon/filme.svg`
+                // poster.src = `../icon/filme.svg`
+            }else{
+                link.append(poster)
+                linkTitle.append(title)
+        
+                containerMovie.append(link)
+                containerMovie.append(linkTitle)
+                ulListMovie.append(containerMovie)
+                
             }
-
-            link.append(poster)
-            linkTitle.append(title)
-
-            // containerMovie.append(titleFavorites)
-            containerMovie.append(link)
-            containerMovie.append(linkTitle)
-            container.append(containerMovie)
 
         })
         
