@@ -77,6 +77,10 @@ app.get('/personDetails', (req, res) =>{
   res.sendFile(path.join(__dirname, '/views/detailsPerson.html'));
 })
 
+app.get('/esqueceuSenha', (req, res) =>{
+  res.sendFile(path.join(__dirname, '/views/TelaEsqueciSenha.html'));
+})
+
 // Realizando login do usuário
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
