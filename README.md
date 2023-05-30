@@ -114,6 +114,9 @@ GET localhost:3000/rating/:id
 Essas são apenas algumas das rotas definidas no servidor. O código também inclui consultas ao banco de dados para realizar operações 
 como inserção, atualização e seleção de dados.
 
+### Consumo da API
+A aplicação consome a API: api.themoviedb.org/3 para obter informações sobre os filmes. Essa API fornece dados atualizados sobre filmes, incluindo detalhes, avaliações e elenco. Ao utilizar a API, a aplicação MovieFinder oferece aos usuários acesso a informações precisas e relevantes sobre os filmes em exibição.
+
 ### Funcionalidades
 A seguir estão algumas das principais funcionalidades oferecidas pelo MovieFinder:
 
@@ -133,6 +136,71 @@ A seguir estão algumas das principais funcionalidades oferecidas pelo MovieFind
 
 - Perfil e logout: Os usuários podem acessar seu perfil a partir de qualquer página, por meio de um botão dedicado. Também há um botão para fazer logout da aplicação.
 
+### Banco de Dados
+A aplicação utiliza um banco de dados MySQL para armazenar informações dos usuários, como nome, email, senha, filmes favoritos e filmes para assistir mais tarde. As tabelas do banco de dados são as seguintes:
+
+```sql
+CREATE DATABASE MOVIEFINDER;
+
+USE MOVIEFINDER;
+
+CREATE TABLE users (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT NOW(),
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE favoriteMovies(
+	id INT(11) NOT NULL auto_increment,
+    idMovie INT(20) NOT NULL,
+    idUser INT(11) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idUser) REFERENCES users(id)
+);
+
+CREATE TABLE interestList(
+	id INT(11) NOT NULL auto_increment,
+    idMovie INT(20) NOT NULL,
+    idUser INT(11) NOT NULL, 
+    PRIMARY KEY (id),
+    FOREIGN KEY (idUser) REFERENCES users(id)
+);
+
+CREATE TABLE rating(
+	id INT(11) NOT NULL auto_increment,
+    idMovie INT(20) NOT NULL,
+    idUser INT(11) NOT NULL,
+    note NUMERIC NOT NULL,
+    
+    PRIMARY KEY (id),
+    FOREIGN KEY (idUser) REFERENCES users(id)
+);
+
+```
+
+### Executando a aplicação
+- Certifique-se de ter o Node.js e o MySQL instalados em sua máquina.
+- Clone este repositótio
+```bash
+git clone https://github.com/Teixeira007/Movie-Finder.git
+```
+- Acesse o diretório do projeto:
+```bash
+cd MovieFinder
+```
+- Instale as dependências do projeto:
+ ```bash
+ npm install
+ ```
+ - Execute o servidor
+ ```bash
+ node index.js
+ ```
+ - Acesse a aplicação em seu navegador em 'http://localhost:3000'
+ 
 ### Tecnologias Utilizadas
 A aplicação MovieFinder foi desenvolvida utilizando as seguintes tecnologias:
 
