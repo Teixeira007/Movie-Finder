@@ -121,16 +121,30 @@ A aplicação consome a API: api.themoviedb.org/3 para obter informações sobre
 A seguir estão algumas das principais funcionalidades oferecidas pelo MovieFinder:
 
 - Tela inicial: Exibe os filmes mais populares, tendências, filmes em cartaz, melhores avaliados e próximos lançamentos.
-
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/1.png"><br>
 - Detalhes do filme: Ao clicar em um filme, é possível ver informações detalhadas, como pôster, nome, tempo de duração, gênero, sinopse, diretores e elenco. Os usuários também podem avaliar o filme, adicioná-lo à lista de filmes favoritos (se estiverem logados) e à lista de "assistir mais tarde" (se estiverem logados). As avaliações dos filmes também são exibidas.
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/2.png"><br>
+
+Elenco do Filme
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/3.png"><br>
+
 
 - Detalhes do elenco: Ao clicar em um membro do elenco, é exibida uma página com detalhes sobre aquele autor, incluindo nome, biografia, foto, filmes em que atuou, gênero, local de nascimento e data de nascimento.
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/4.png"><br>
 
 - Cadastro e login de usuários: A aplicação possui páginas de cadastro e login. O formulário de cadastro possui validações para garantir que todos os campos obrigatórios sejam preenchidos corretamente. Os dados dos usuários cadastrados são armazenados em um banco de dados MySQL.
 
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/5.png"><br>
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/6.png"><br>
+
+
 - Gerenciamento de favoritos e lista de "assistir mais tarde": Os usuários logados podem adicionar filmes à sua lista de filmes favoritos e à lista de "assistir mais tarde". Essas informações são armazenadas no banco de dados.
 
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/7.png"><br>
+
+
 - Recomendações personalizadas: Na página de perfil do usuário, são exibidas as listas de filmes favoritos e de "assistir mais tarde". Com base nos filmes presentes na lista de gostei, a aplicação oferece várias recomendações de filmes para o usuário assistir.
+<img src="https://github.com/Teixeira007/Movie-Finder/blob/main/imgResultado/8.png"><br>
 
 - Campo de busca: Existe um campo de busca na parte superior do site que permite aos usuários pesquisar por filmes específicos.
 
